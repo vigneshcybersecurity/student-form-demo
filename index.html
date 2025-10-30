@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muthayammal Engineering College</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #004b23;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px 0;
+    }
+
+    .search-box {
+      width: 40%;
+      display: flex;
+      border: 2px solid #004b23;
+      border-radius: 25px;
+      overflow: hidden;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .search-box button {
+      background-color: #004b23;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .form-container {
+      width: 60%;
+      margin: 20px auto;
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-container button {
+      background-color: #004b23;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #004b23;
+      color: white;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Muthayammal Engineering College</h1>
+  </header>
+
+  <!-- GitHub-style search box -->
+  <div class="search-container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search something...">
+      <button onclick="getSearchInput()">Search</button>
+    </div>
+  </div>
+
+  <!-- Formspree integration -->
+  <div class="form-container">
+    <form action="https://formspree.io/f/mpwoljwd" method="POST">
+      <label>
+        Your email:
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        Your message:
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+
+      <!-- Hidden field to capture search input -->
+      <input type="hidden" name="search_query" id="searchQueryField">
+
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <footer>
+    © 2025 Muthayammal Engineering College
+  </footer>
+
+  <script>
+    // Function to get the user search input
+    function getSearchInput() {
+      const input = document.getElementById('searchInput').value;
+      document.getElementById('searchQueryField').value = input;
+
+      if (input.trim() === "") {
+        alert("Please enter something to search!");
+      } else {
+        alert("You searched for: " + input);
+      }
+    }
+
+    // Allow pressing Enter to trigger search
+    document.getElementById('searchInput').addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        getSearchInput();
+      }
+    });
+  </script>
+
+</body>
+</html>
