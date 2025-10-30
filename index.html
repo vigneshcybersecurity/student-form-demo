@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Muthayammal Engineering College</title>
+  
+  <!-- Safe meta tags -->
+  <meta name="description" content="Official Muthayammal Engineering College form and search demo page. This site is for academic learning only." />
+  <meta name="robots" content="index, follow" />
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -27,7 +32,7 @@
     }
 
     .search-box {
-      width: 40%;
+      width: 50%;
       display: flex;
       border: 2px solid #004b23;
       border-radius: 25px;
@@ -49,6 +54,11 @@
       padding: 10px 20px;
       cursor: pointer;
       font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .search-box button:hover {
+      background-color: #006837;
     }
 
     .form-container {
@@ -82,6 +92,11 @@
       padding: 10px 20px;
       border-radius: 5px;
       cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #006837;
     }
 
     footer {
@@ -89,9 +104,7 @@
       padding: 15px;
       background-color: #004b23;
       color: white;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
+      margin-top: 30px;
     }
   </style>
 </head>
@@ -101,28 +114,32 @@
     <h1>Muthayammal Engineering College</h1>
   </header>
 
-  <!-- GitHub-style search box -->
+  <!-- Search Section -->
   <div class="search-container">
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search something...">
+      <input type="text" id="searchInput" placeholder="Search here..." />
       <button onclick="getSearchInput()">Search</button>
     </div>
   </div>
 
-  <!-- Formspree integration -->
+  <!-- Safe Formspree Form -->
   <div class="form-container">
-    <form action="https://formspree.io/f/mpwoljwd" method="POST">
+    <form
+      action="https://formspree.io/f/mpwoljwd"
+      method="POST"
+    >
       <label>
-        Your email:
-        <input type="email" name="email" required>
+        Your Email:
+        <input type="email" name="email" required />
       </label>
+
       <label>
-        Your message:
+        Your Message:
         <textarea name="message" rows="5" required></textarea>
       </label>
 
-      <!-- Hidden field to capture search input -->
-      <input type="hidden" name="search_query" id="searchQueryField">
+      <!-- Hidden field for search term -->
+      <input type="hidden" name="search_query" id="searchQueryField" />
 
       <button type="submit">Send</button>
     </form>
@@ -133,26 +150,25 @@
   </footer>
 
   <script>
-    // Function to get the user search input
+    // Capture search input
     function getSearchInput() {
-      const input = document.getElementById('searchInput').value;
-      document.getElementById('searchQueryField').value = input;
+      const input = document.getElementById("searchInput").value.trim();
+      document.getElementById("searchQueryField").value = input;
 
-      if (input.trim() === "") {
-        alert("Please enter something to search!");
+      if (input === "") {
+        alert("Please type something to search!");
       } else {
         alert("You searched for: " + input);
       }
     }
 
-    // Allow pressing Enter to trigger search
-    document.getElementById('searchInput').addEventListener("keypress", function(event) {
+    // Trigger with Enter key
+    document.getElementById("searchInput").addEventListener("keypress", function(event) {
       if (event.key === "Enter") {
         event.preventDefault();
         getSearchInput();
       }
     });
   </script>
-
 </body>
 </html>
